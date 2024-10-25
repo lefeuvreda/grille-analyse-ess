@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille d'Analyse ESS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        legend {
+            font-weight: bold;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .comment, input[type="text"], select {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grille d’Analyse ESS</h1>
+    
+    <form id="grilleForm">
+        <!-- Informations de l'élève et de l'enseignant -->
+        <fieldset>
+            <legend>Informations de l'Élève et de l'Enseignant</legend>
+            <label for="prenom_eleve">Prénom de l'élève :</label>
+            <input type="text" id="prenom_eleve" name="prenom_eleve" required><br>
+
+            <label for="nom_eleve">Nom de l'élève :</label>
+            <input type="text" id="nom_eleve" name="nom_eleve" required><br>
+
+            <label for="classe">Classe :</label>
+            <select id="classe" name="classe" required>
+                <option value="" disabled selected>Choisissez une classe</option>
+                <!-- Boucle des options de 6 à 3 et de A à E -->
+                <option value="6A">6A</option>
+                <option value="6B">6B</option>
+                <option value="6C">6C</option>
+                <option value="6D">6D</option>
+                <option value="6E">6E</option>
+                <option value="5A">5A</option>
+                <option value="5B">5B</option>
+                <option value="5C">5C</option>
+                <option value="5D">5D</option>
+                <option value="5E">5E</option>
+                <option value="4A">4A</option>
+                <option value="4B">4B</option>
+                <option value="4C">4C</option>
+                <option value="4D">4D</option>
+                <option value="4E">4E</option>
+                <option value="3A">3A</option>
+                <option value="3B">3B</option>
+                <option value="3C">3C</option>
+                <option value="3D">3D</option>
+                <option value="3E">3E</option>
+            </select><br>
+
+            <label for="nom_enseignant">Nom enseignant :</label>
+            <input type="text" id="nom_enseignant" name="nom_enseignant" required><br>
+
+            <label for="matiere">Matière :</label>
+            <input type="text" id="matiere" name="matiere" required><br>
+        </fieldset>
+
+        <!-- Attention et Concentration -->
+        <fieldset>
+            <legend>Attention et Concentration</legend>
+            <label>L’élève parvient-il à maintenir son attention durant les activités ?</label>
+            <input type="radio" name="attention_activites" value="Oui, tout le temps"> Oui, tout le temps
+            <input type="radio" name="attention_activites" value="Parfois"> Parfois
+            <input type="radio" name="attention_activites" value="Rarement"> Rarement<br>
+
+            <label>Besoin de rappels fréquents pour rester concentré ?</label>
+            <input type="radio" name="besoin_rappels" value="Oui"> Oui
+            <input type="radio" name="besoin_rappels" value="Non"> Non<br>
+
+            <label for="attention_comment">Commentaires :</label>
+            <textarea id="attention_comment" name="attention_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Compréhension des Consignes -->
+        <fieldset>
+            <legend>Compréhension des Consignes</legend>
+            <label>L’élève comprend-il les consignes dès le premier énoncé ?</label>
+            <input type="radio" name="comprehension_consignes" value="Oui"> Oui
+            <input type="radio" name="comprehension_consignes" value="Non"> Non
+            <input type="radio" name="comprehension_consignes" value="Besoin de reformulation"> Besoin de reformulation<br>
+
+            <label>A besoin de supports visuels pour comprendre les consignes :</label>
+            <input type="radio" name="supports_visuels" value="Oui"> Oui
+            <input type="radio" name="supports_visuels" value="Non"> Non<br>
+
+            <label for="comprehension_comment">Commentaires :</label>
+            <textarea id="comprehension_comment" name="comprehension_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Participation en Classe -->
+        <fieldset>
+            <legend>Participation en Classe</legend>
+            <label>Participe de manière spontanée et régulière</label>
+            <input type="radio" name="participation_spontanee" value="Oui"> Oui
+            <input type="radio" name="participation_spontanee" value="Parfois"> Parfois
+            <input type="radio" name="participation_spontanee" value="Rarement"> Rarement<br>
+
+            <label>Prend des initiatives ou attend d’être sollicité</label>
+            <input type="radio" name="initiatives" value="Prend des initiatives"> Prend des initiatives
+            <input type="radio" name="initiatives" value="Attend d’être sollicité"> Attend d’être sollicité<br>
+
+            <label for="participation_comment">Commentaires :</label>
+            <textarea id="participation_comment" name="participation_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Autonomie et Organisation -->
+        <fieldset>
+            <legend>Autonomie et Organisation</legend>
+            <label>Travaille seul et organise ses affaires de manière autonome</label>
+            <input type="radio" name="autonomie" value="Oui, totalement"> Oui, totalement
+            <input type="radio" name="autonomie" value="Partiellement"> Partiellement
+            <input type="radio" name="autonomie" value="Non"> Non<br>
+
+            <label>Oublie fréquemment son matériel ou ses devoirs</label>
+            <input type="radio" name="oubli_materiel" value="Oui"> Oui
+            <input type="radio" name="oubli_materiel" value="Non"> Non<br>
+
+            <label for="autonomie_comment">Commentaires :</label>
+            <textarea id="autonomie_comment" name="autonomie_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Mémoire et Rétention d'Informations -->
+        <fieldset>
+            <legend>Mémoire et Rétention d'Informations</legend>
+            <label>Retient les notions abordées dans le cours précédent</label>
+            <input type="radio" name="retention_notions" value="Oui, facilement"> Oui, facilement
+            <input type="radio" name="retention_notions" value="Parfois"> Parfois
+            <input type="radio" name="retention_notions" value="Non, difficultés"> Non, difficultés<br>
+
+            <label>A des difficultés à retenir sur une longue période</label>
+            <input type="radio" name="difficulte_longue_periode" value="Oui"> Oui
+            <input type="radio" name="difficulte_longue_periode" value="Non"> Non<br>
+
+            <label for="memoire_comment">Commentaires :</label>
+            <textarea id="memoire_comment" name="memoire_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Rapport à l’Adulte -->
+        <fieldset>
+            <legend>Rapport à l’Adulte</legend>
+            <label>Fait preuve de respect envers les adultes (enseignants, personnel)</label>
+            <input type="radio" name="respect_adultes" value="Oui"> Oui
+            <input type="radio" name="respect_adultes" value="Parfois"> Parfois
+            <input type="radio" name="respect_adultes" value="Non"> Non<br>
+
+            <label>Recherche le soutien ou la validation des adultes</label>
+            <input type="radio" name="soutien_validation" value="Oui, souvent"> Oui, souvent
+            <input type="radio" name="soutien_validation" value="Parfois"> Parfois
+            <input type="radio" name="soutien_validation" value="Rarement"> Rarement<br>
+
+            <label for="rapport_comment">Commentaires :</label>
+            <textarea id="rapport_comment" name="rapport_comment" class="comment" rows="3" placeholder="Ajoutez des commentaires ici..."></textarea>
+        </fieldset>
+
+        <!-- Bouton de soumission -->
+        <button type="button" onclick="submitForm()">Soumettre</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            const formData = new FormData(document.getElementById("grilleForm"));
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            console.log("Données du formulaire :", formObject); // Affiche les données dans la console
+
+            // Envoi au serveur
+            fetch("https://votre_serveur_endpoint", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Formulaire soumis avec succès !");
+                } else {
+                    alert("Erreur lors de la soumission du formulaire.");
+                }
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+                alert("Une erreur s'est produite lors de l'envoi du formulaire.");
+            });
+        }
+    </script>
+</body>
+</html>
